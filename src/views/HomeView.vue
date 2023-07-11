@@ -1,15 +1,25 @@
 <template>
   <div class="home">
+    <Carousel>
+      <Slide>
+        <div>
+          <p>Hello</p>
+        </div>
+      </Slide>
+    </Carousel>
+
 
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+
+import Carousel from "@/components/Carousel.vue";
+import Slide from "@/components/Slide.vue";
 
 
 export default {
   name: 'HomeView',
-  components: {}
+  components: { Carousel, Slide }
 }
 </script>
