@@ -1,14 +1,12 @@
 <template>
   <div class="home">
     <Carousel class="carousel">
-      <Slide>
-        <div>
-          <p>Hello</p>
+      <Slide v-for="(slide, index) in carouselSlides" :key="index">
+        <div class="slide-info">
+          <img :src="require(`../assets/${slide}.jpg`)" alt="">
         </div>
       </Slide>
     </Carousel>
-
-
   </div>
 </template>
 
@@ -19,11 +17,14 @@ import Slide from "@/components/Slide.vue";
 
 
 export default {
-  name: 'HomeView',
+  name: 'Home',
   components: { Carousel, Slide },
   setup() {
+    const carouselSlides = ["bg-1", "bg-2", "bg-3"];
 
-  }
+    return {carouselSlides};
+
+  },
 }
 </script>
 
