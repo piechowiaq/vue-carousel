@@ -1,12 +1,16 @@
 <script setup>
 
+import { ref } from "vue";
+
+const currentSlide = ref(1)
+
 
 </script>
 
 
 <template>
   <div class="carousel">
-    <slot/>
+    <slot :currentSlide="currentSlide" />
   </div>
 
 </template>

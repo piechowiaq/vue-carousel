@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <Carousel class="carousel">
+    <Carousel class="carousel" v-slot="{ currentSlide }">
       <Slide v-for="(slide, index) in carouselSlides" :key="index">
-        <div class="slide-info">
+        <div v-show="currentSlide === index + 1" class="slide-info">
           <img :src="require(`../assets/${slide}.jpg`)" alt="">
         </div>
       </Slide>
