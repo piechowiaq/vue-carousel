@@ -42,6 +42,8 @@ const prevSlide = () => {
         <i @click="nextSlide" class="fas fa-chevron-right"></i>
       </div>
     </div>
+    <!-- Pagination -->
+
   </div>
 
 </template>
