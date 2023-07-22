@@ -1,11 +1,13 @@
 <script setup>
 
-import { ref, onMounted } from "vue";
+import { ref, onMounted, defineProps } from "vue";
 
 const currentSlide = ref(1);
 const getSlideCount = ref(null);
 const autoPlayEnabled = ref(true);
 const timeoutDuration = ref(3000);
+const paginationEnabled = ref(props.pagination === undefined ? true : props.pagination);
+const navigationEnabled = ref(props.navigation === undefined ? true : props.navigation);
 
 onMounted(() => {
   getSlideCount.value = document.querySelectorAll(".slide").length;
@@ -42,6 +44,8 @@ if (autoPlayEnabled.value) {
   autoPlay();
 }
 
+const props = defineProps(["startAutoPlay", "timeout", "navigation",  "pagination"  ]);
+
 
 </script>
 
@@ -50,7 +54,7 @@ if (autoPlayEnabled.value) {
   <div class="carousel">
     <slot :currentSlide="currentSlide" />
     <!-- Navigation -->
-    <div class="navigate">
+    <div  v-if="navigationEnabled" class="navigate">
       <div class="toggle-page left">
         <i @click="prevSlide" class="fas fa-chevron-left"></i>
       </div>
@@ -59,7 +63,7 @@ if (autoPlayEnabled.value) {
       </div>
     </div>
     <!-- Pagination -->
-    <div class="pagination">
+    <div v-if="paginationEnabled" class="pagination">
       <span v-for="(slide, index) in getSlideCount" :key="index" :class="{active : index + 1  === currentSlide }" @click="goToSlide(index)"></span>
     </div>
 
